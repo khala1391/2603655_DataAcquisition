@@ -1,0 +1,242 @@
+{
+ "schema":{
+  "fields":[
+   {
+    "name":"index",
+    "type":"integer"
+   },
+   {
+    "name":"event_date",
+    "type":"datetime"
+   },
+   {
+    "name":"event_time",
+    "type":"datetime"
+   },
+   {
+    "name":"prod_name",
+    "type":"string"
+   },
+   {
+    "name":"domain_name",
+    "type":"string"
+   }
+  ],
+  "primaryKey":[
+   "index"
+  ],
+  "pandas_version":"1.4.0"
+ },
+ "data":[
+  {
+   "index":0,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T23:49:47.000",
+   "prod_name":"Diana, William, and Harry",
+   "domain_name":"audible.com"
+  },
+  {
+   "index":1,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T23:49:47.000",
+   "prod_name":"Livid",
+   "domain_name":"audible.com"
+  },
+  {
+   "index":2,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T23:49:47.000",
+   "prod_name":"The Girl with the Yellow Star",
+   "domain_name":"audible.com"
+  },
+  {
+   "index":3,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T23:49:47.000",
+   "prod_name":"Killer View",
+   "domain_name":"audible.com"
+  },
+  {
+   "index":4,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T18:45:18.000",
+   "prod_name":"Italian Meats Trio Papa Bowl",
+   "domain_name":"papajohns.com"
+  },
+  {
+   "index":5,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T18:45:18.000",
+   "prod_name":"Pepperoncini Peppers",
+   "domain_name":"papajohns.com"
+  },
+  {
+   "index":6,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T18:45:18.000",
+   "prod_name":"Create Your Own Papadia",
+   "domain_name":"papajohns.com"
+  },
+  {
+   "index":7,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T20:49:27.000",
+   "prod_name":"The Huguenot Chronicles: Books 1 - 3 (includes: Merchants of Virtue, Voyage of Malice, Land of Hope): A historical fiction trilogy B09J3RYL5G",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":8,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T21:26:51.000",
+   "prod_name":"The Murder Mystery: A totally gripping cozy murder mystery (A Beth Haldane Mystery Book 1) B0B5F85LQ3",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":9,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T14:45:33.000",
+   "prod_name":"CRANK N CHARGE Starter Solenoid Replacement For Johnson, OMC, Evinrude Outboard Motor",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":10,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T14:45:33.000",
+   "prod_name":"Total Power Parts STARTER OMC EVINRUDE OUTBOARD 15 25 30 40 00 00 00 75 90 HP 2004-2011,SAB0147 B08WJL1Z68",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":11,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T18:30:46.000",
+   "prod_name":"Monday, Jan. 9",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":12,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T18:30:46.000",
+   "prod_name":"Cricut Explore 3 Machine Smart Vinyl & Tools Bundle 2X Faster DIY Matless Cutting, Cuts 100  Materials, Compatible with iOS Android Windows & Mac, Bluetooth Connectivity, Personalized Custom Designs B096YQGVDF craftecorner",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":13,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T18:30:46.000",
+   "prod_name":"Get a  1 reward for select  digital items. One reward per purchase. Details",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":14,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T21:38:28.000",
+   "prod_name":"Hilton Herbs 18426-2 Bye Bye Fly Garlic Granules 4.4lb B07DNH82H5 Kaspien",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":15,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T21:38:28.000",
+   "prod_name":"? 50 Billion CFU Probiotic with Prebiotics ? No Refrigeration Needed ? With Prebiotics for 10x More Effectiveness ? 2 Months Supply Per Bottle ? B01AHFRNNE IntelligentLabs",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":16,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T21:38:28.000",
+   "prod_name":"Nature Made Iron 65mg, 180 Tablets B003PGJLRO Amazon.com Services LLC",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":17,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T19:49:09.000",
+   "prod_name":"Flight united",
+   "domain_name":"united.com"
+  },
+  {
+   "index":18,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T06:58:10.000",
+   "prod_name":"30 Pairs Cute Earrings Funny Weird Aesthetic Kawaii Quirky Indie Crazy Earrings Weirdcore Accessories Earrings Summer Lot Earrings Multiple Sets for Teen Girls Women B0B218DQWJ",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":19,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T06:58:10.000",
+   "prod_name":"Light Therapy Lamp, 3 Color Temperature Modes Therapy Light-UV-Free LED Happy Mood Light with 10,000 Lux 5 Brightness Levels - Natural Daylight Sun Lamp for Office\/Home Decor Birthday Christmas Gift B0B9MB4DCB",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":20,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T06:58:10.000",
+   "prod_name":"DIKAKO Light Therapy Lamp, 15000 Lx Sun Lamp ,3 Color Temperature, 5 Levels of Adjustable Brightness and Timer Function Light Lamp, Touch Control, Rotatable Stand, Memory Function, Home\/Office Use B09WVNDTLC",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":21,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T23:20:06.000",
+   "prod_name":"Pizza",
+   "domain_name":"dominos.com"
+  },
+  {
+   "index":22,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T23:20:06.000",
+   "prod_name":"Sides",
+   "domain_name":"dominos.com"
+  },
+  {
+   "index":23,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T23:20:06.000",
+   "prod_name":"Wings",
+   "domain_name":"dominos.com"
+  },
+  {
+   "index":24,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T19:34:41.000",
+   "prod_name":"Mengmall 450 PCS Backflow Incense Cones 9 Kinds of Incense Cones for Waterfall Natural Scents for Backflow Incense Burner B0B8ZSSRJF",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":25,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T17:05:07.000",
+   "prod_name":"Allevyn Adhesive Foam Dressing 7\" x 7\" - Box of 10 B015W6BEM4",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":26,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T17:05:07.000",
+   "prod_name":"McKesson ABD Pads, Sterile Abdominal Pads, Wound Dressing, 8 in x 10 in, 24 Count, 2 Packs, 48 Total B09SS7NFSH",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":27,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T17:05:07.000",
+   "prod_name":"McKesson Cotton-Tipped Applicator Swabstick, Sterile, Wood Shaft, 6 in, 100 Count, 1 Pack B08111ZV73",
+   "domain_name":"amazon.com"
+  },
+  {
+   "index":28,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T18:18:32.000",
+   "prod_name":"Flight",
+   "domain_name":"aa.com"
+  },
+  {
+   "index":29,
+   "event_date":"2023-01-01T00:00:00.000",
+   "event_time":"1900-01-01T18:35:17.000",
+   "prod_name":"Flight",
+   "domain_name":"aa.com"
+  }
+ ]
+}
