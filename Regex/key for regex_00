@@ -1,0 +1,87 @@
+.       - Any Character Except New Line
+\d      - Digit (0-9)
+\D      - Not a Digit (0-9)
+\w      - Word Character (a-z, A-Z, 0-9, _)
+\W      - Not a Word Character
+\s      - Whitespace (space, tab, newline)
+\S      - Not Whitespace (space, tab, newline)
+
+\b      - Word Boundary
+\B      - Not a Word Boundary
+^       - Beginning of a String
+$       - End of a String
+
+[]      - Matches Characters in brackets
+[^ ]    - Matches Characters NOT in brackets
+|       - Either Or
+( )     - Group
+
+Quantifiers:
+*       - 0 or More
++       - 1 or More
+?       - 0 or One
+{3}     - Exact Number
+{3,4}   - Range of Numbers (Minimum, Maximum)
+
+
+
+#### Sample Regexs ####
+
+[abc]	a, b หรือ c อย่างใดอย่างหนึ่ง
+[^abc]	อะไรก็ได้ที่ไม่ใช่ a,b หรือ c
+[a-f]	อะไรก็ได้ระหว่าง a ถึง f
+
+
+(...)	capture group
+\1	reference group #1
+(a | b)	a หรือ b
+a*	ไม่มี a หรือมีก็ได้
+a+	a อย่างน้อย 1 ตัว
+a?	ไม่มี a หรือมี a ได้แค่ 1ตัว
+a5	มี a 5 ตัว
+a5	มี a ได้ 2 ถึง 5 ตัว
+
+
+
+
+e-mail
+[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]
+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+
+
+e-mail with . at least 3 character
+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{3,}
+[a-zA-Z0-9_.%+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+
+
+date
+[0-9]+[/-]+[0-9]++[/-]+[0-9]+
+\b\d{2}/\d{2}/\d{4}\b
+
+
+2 character
+\b[a-zA-Z]{2}\b
+
+5 character and greater
+\b[a-zA-Z]{5,}\b
+
+
+url
+https?://[^\s]+
+
+url (unrealistic)
+http[\w]?://[^\s]+
+
+
+word with last bracket
+\(([^)(]+)\)
+
+word with capital letter
+\b[A-Z]+\b
+
+word with i or I
+\b[Ii]\w+\b
+
+phrase start at beginning
+^(The lazy)
+
+pharse end
+(lazy dog.)$

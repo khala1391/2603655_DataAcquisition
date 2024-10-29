@@ -1,0 +1,46 @@
+import numpy as np
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+
+documents = [
+    "the cat is on the mat",
+    "the dog is in the yard",
+    "the cat and the dog are playing"
+]
+
+print("Original documents:")
+for i, doc in enumerate(documents):
+  print(f"Document {i+1}: {doc}")
+
+print("\n## Bag of Words (Binary)")
+vocabulary = sorted(set(" ".join(documents).split()))
+bow_vectors = []
+for doc in documents:
+  vector = {word: 1 if word in doc.split() else 0 for word in vocabulary}
+  bow_vectors.append(vector)
+
+bow_df = pd.DataFrame(bow_vectors, index=[f"Doc {i+1}" for i in range(len(documents))])
+print("BoW DataFrame:")
+print(bow_df)
+
+print("\n## Count Vectorizer")
+count_vectorizer = CountVectorizer()
+count_matrix = count_vectorizer.fit_transform(documents)
+count_df = pd.DataFrame(
+  count_matrix.toarray(),
+  columns=count_vectorizer.get_feature_names_out(),
+  index=[f"Doc {i+1}" for i in range(len(documents))]
+)
+print("Count Vectorizer DataFrame:")
+print(count_df)
+
+print("\n## TF-IDF")
+tfidf_vectorizer = TfidfVectorizer()
+tfidf_matrix = tfidf_vectorizer.fit_transform(documents)
+tfidf_df = pd.DataFrame(
+  tfidf_matrix.toarray(),
+  columns=tfidf_vectorizer.get_feature_names_out(),
+  index=[f"Doc {i+1}" for i in range(len(documents))]
+)
+print("TF-IDF DataFrame:")
+print(tfidf_df)

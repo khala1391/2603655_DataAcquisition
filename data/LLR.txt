@@ -1,0 +1,75 @@
+from pythainlp.corpus import thai_words
+from pythainlp.tokenize import word_tokenize
+from pythainlp.util import dict_trie
+import math
+from collections import Counter
+import re
+
+def calculate_llr(k11, k12, k21, k22):
+  """
+  Calculate Log-Likelihood Ratio
+  k11: frequency of word pair
+  k12: frequency of word1 without word2
+  k21: frequency of word2 without word1
+  k22: frequency of neither word
+  """
+  n = k11 + k12 + k21 + k22
+  row1 = k11 + k12
+  row2 = k21 + k22
+  col1 = k11 + k21
+  col2 = k12 + k22
+
+  # Avoid division by zero
+  def ll(k, n, x):
+    if k == 0:
+      return 0
+    return k * math.log(k / (n * x))
+
+  # Calculate LLR
+  llr = 2 * (ll(k11, n, (row1 * col1) / (n * n)) +
+             ll(k12, n, (row1 * col2) / (n * n)) +
+             ll(k21, n, (row2 * col1) / (n * n)) +
+             ll(k22, n, (row2 * col2) / (n * n)))
+
+  return llr
+
+def is_english(text):
+  return bool(re.search(r'[a-zA-Z]', text))
+
+f = open('content.txt','r',encoding='utf-8')
+content = f.read()
+f.close()
+
+
+# Tokenize text
+tokens = [token for token in word_tokenize(content,engine='newmm') if len(token)>1]
+
+# Create word pairs (bigrams)
+word_pairs = [(tokens[i], tokens[i+1]) for i in range(len(tokens)-1)]
+
+# Count frequencies
+pair_counts = Counter(word_pairs)
+word_counts = Counter(tokens)
+total_words = len(tokens)
+
+# Calculate LLR for each pair
+llr_scores = {}
+for pair, pair_freq in pair_counts.items():
+  word1, word2 = pair
+  k11 = pair_freq
+  k12 = word_counts[word1] - pair_freq
+  k21 = word_counts[word2] - pair_freq
+  k22 = total_words - k11 - k12 - k21
+
+  llr_scores[pair] = calculate_llr(k11, k12, k21, k22)
+
+# Print top collocations
+custom_dict_words = list()
+for pair, score in sorted(llr_scores.items(), key=lambda x: x[1], reverse=True)[:20]:
+  if is_english(pair[0]) and is_english(pair[1]):
+    print(f"Word pair: {' '.join(pair)}, LLR score: {score:.2f}")
+    custom_dict_words.append(' '.join(pair))
+  else:
+    print(f"Word pair: {''.join(pair)}, LLR score: {score:.2f}")
+    custom_dict_words.append(''.join(pair))
+print(custom_dict_words)
