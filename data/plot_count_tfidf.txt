@@ -1,0 +1,40 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def compare_cosine_matrices(cosine_count, cosine_tfidf):
+  difference_matrix = cosine_tfidf - cosine_count
+
+  mean_diff = np.mean(difference_matrix)
+  median_diff = np.median(difference_matrix)
+  max_abs_diff = np.max(np.abs(difference_matrix))  # Maximum absolute difference
+
+  fig, axes = plt.subplots(3, 1, figsize=(10, 27))
+
+  sns.heatmap(difference_matrix, cmap='coolwarm', center=0, ax=axes[0])
+  axes[0].set_title('Difference (TF-IDF - Count)')
+
+  axes[1].hist(difference_matrix.flatten(), bins=50)
+  axes[1].set_title('Histogram of Differences')
+  axes[1].set_xlabel('Difference')
+  axes[1].set_ylabel('Frequency')
+
+  axes[2].scatter(cosine_count.flatten(), cosine_tfidf.flatten(), alpha=0.1)
+  axes[2].plot([0, 1], [0, 1], 'r--')  # Diagonal line
+  axes[2].set_xlabel('Count Vectorization Cosine Similarity')
+  axes[2].set_ylabel('TF-IDF Vectorization Cosine Similarity')
+  axes[2].set_title('Count vs TF-IDF Cosine Similarity')
+
+  plt.tight_layout()
+  plt.show()
+
+  print(f"Mean difference: {mean_diff:.4f}")
+  print(f"Median difference: {median_diff:.4f}")
+
+  print(f"Max difference: {max_abs_diff:.4f}")
+  diff_index = np.unravel_index(np.argmax(np.abs(difference_matrix)), difference_matrix.shape)
+  print(f"Max difference at index: {diff_index}")
+  print(f"Count similarity at this index: {cosine_count[diff_index]:.4f}")
+  print(f"TF-IDF similarity at this index: {cosine_tfidf[diff_index]:.4f}")
+
+compare_cosine_matrices(cosine_count, cosine_tfidf)

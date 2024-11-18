@@ -1,0 +1,48 @@
+import chromadb
+
+# Create a client
+client = chromadb.Client()
+
+# Create a collection
+collection = client.create_collection("movies")
+
+# Add some movie data
+collection.add(
+    documents=[
+        "The Shawshank Redemption is a classic prison drama",
+        "Inception is a mind-bending sci-fi thriller",
+        "The Godfather is an iconic mafia film",
+        "Jurassic Park features dinosaurs in a theme park"
+    ],
+    metadatas=[
+        {"genre": "Drama", "year": 1994},
+        {"genre": "Sci-Fi", "year": 2010},
+        {"genre": "Crime", "year": 1972},
+        {"genre": "Adventure", "year": 1993}
+    ],
+    ids=["1", "2", "3", "4"]
+)
+
+# Query the collection
+results = collection.query(
+    query_texts=["A movie about dreams"],
+    n_results=2
+)
+
+# Print results
+print("Query Results:")
+for i, doc in enumerate(results['documents'][0]):
+    print(f"{i+1}. {doc}")
+    print(f"   Metadata: {results['metadatas'][0][i]}")
+    print()
+
+# Search by metadata
+metadata_results = collection.query(
+    query_texts=[""],
+    where={"genre": "Drama"},
+    n_results=1
+)
+
+print("Metadata Search Result:")
+print(metadata_results['documents'][0][0])
+print(f"Metadata: {metadata_results['metadatas'][0][0]}")

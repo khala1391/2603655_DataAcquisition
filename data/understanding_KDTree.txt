@@ -1,0 +1,36 @@
+from sklearn.neighbors import KDTree
+import numpy as np
+import matplotlib.pyplot as plt
+
+points = np.array([
+    [2, 3],   # Point A
+    [5, 4],   # Point B
+    [9, 6],   # Point C
+    [4, 7],   # Point D
+    [8, 1],   # Point E
+    [7, 2]    # Point F
+])
+
+tree = KDTree(points)
+
+query_point = np.array([[6, 5]])
+distances, indices = tree.query(query_point, k=2)
+
+plt.figure(figsize=(10, 8))
+plt.scatter(points[:, 0], points[:, 1], c='blue', label='Data Points')
+plt.scatter(query_point[0, 0], query_point[0, 1], c='red', label='Query Point')
+nearest_points = points[indices[0]]
+plt.scatter(nearest_points[:, 0], nearest_points[:, 1],
+           c='green', label='Nearest Neighbors')
+for i, point in enumerate(points):
+    plt.annotate(f'Point {chr(65+i)}', (point[0], point[1]))
+
+plt.legend()
+plt.grid(True)
+plt.title('KD-Tree Nearest Neighbor Search Example')
+plt.xlabel('X coordinate')
+plt.ylabel('Y coordinate')
+
+print(f'Distances to nearest neighbors: {distances[0]}')
+print(f'Nearest neighbor indices: {indices[0]}')
+print(f'Nearest neighbor coordinates: \n{points[indices[0]]}')
