@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from skimage import exposure
+
+img1 = plt.imread('lumphini_park.jpg')
+
+rImg = img1[:,:,0]
+gImg = img1[:,:,1]
+bImg = img1[:,:,2]
+
+grayImg = 0.299*rImg + 0.587*gImg + 0.114*bImg
+
+gammaImg = exposure.adjust_gamma(rImg,gamma=0.2)
+eqHistImg = exposure.equalize_hist(grayImg,nbins=40)
+sigmoidImg = exposure.adjust_sigmoid(grayImg,cutoff=50)
+
+fig,ax = plt.subplots(2,2,figsize=(12,8),dpi=150) ####
+
+plt.subplot(2,2,1)
+plt.imshow(grayImg,cmap='gray')
+plt.subplot(2,2,2)
+plt.imshow(gammaImg,cmap='Reds')
+plt.subplot(2,2,3)
+plt.imshow(eqHistImg,cmap='gray')
+plt.subplot(2,2,4)
+plt.imshow(sigmoidImg,cmap='gray')
+plt.show()

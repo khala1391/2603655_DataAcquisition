@@ -1,0 +1,83 @@
+import anthropic
+from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
+from google.colab import userdata
+
+
+claude_api_key = userdata.get('ANTHROPIC_API_KEY')
+
+client = anthropic.Anthropic(api_key=claude_api_key)
+
+messy_reviews = """
+รีวิวลูกค้า:
+สินค้าดีมากๆๆๆ คุ้มค่าสมราคา55555
+จัดส่งช้าไปหน่อยครับ ไม่ค่อยประทับใจ...
+packaging ดีมากๆ แต่ราคาแพงไปนิสสส
+สั่งมา 2 ชิ้น ได้มาแค่ 1 ชิ้นคะ รบกวนตรวจสอบให้หน่อยน่ะค่ะ
+"""
+
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1000,
+    messages=[{
+        "role": "user",
+        "content": f"""แปลงข้อความรีวิวต่อไปนี้ให้เป็นภาษาที่เป็นทางการ
+        และจัดหมวดหมู่ว่าเป็นความคิดเห็นเชิงบวกหรือลบ: {messy_reviews}"""
+    }]
+)
+
+print(response.content[0].text)
+
+#-------------------------------------------------------------------------------
+
+# Example: Analyzing Thai restaurant sales data
+sales_data = """
+ข้อมูลยอดขายร้านอาหาร ประจำเดือนกันยายน 2567:
+ต้มยำกุ้ง: 250 จาน, รายได้ 37,500 บาท
+ผัดไทย: 180 จาน, รายได้ 23,400 บาท
+ส้มตำ: 300 จาน, รายได้ 30,000 บาท
+ข้าวผัดปู: 200 จาน, รายได้ 36,000 บาท
+"""
+
+prompt = f"""
+วิเคราะห์ข้อมูลยอดขายต่อไปนี้และให้:
+1. เมนูที่ทำรายได้สูงสุด
+2. เมนูที่ขายดีที่สุด (จำนวนจาน)
+3. ราคาเฉลี่ยต่อจานของแต่ละเมนู
+4. คำแนะนำในการปรับปรุงยอดขาย
+
+ข้อมูล: {sales_data}
+"""
+
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1000,
+    messages=[{"role": "user", "content": prompt}]
+)
+
+print(response.content[0].text)
+
+#------------------------------------------------------------------
+
+# Example: Generating visualization code for Thai e-commerce data
+data_description = """
+มีข้อมูล DataFrame ประกอบด้วยคอลัมน์:
+- วันที่ (date)
+- ยอดขาย (sales)
+- ประเภทสินค้า (category: cloth, food, cosmetic)
+
+ต้องการสร้างกราฟแสดงแนวโน้มยอดขายแยกตามประเภทสินค้า
+"""
+
+prompt = f"""
+สร้างโค้ด Python โดยใช้ matplotlib หรือ seaborn เพื่อแสดงกราฟตามที่ต้องการ:
+{data_description}
+แสดงเฉพาะโค้ดโดยไม่ต้องมีคำอธิบาย
+"""
+
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1000,
+    messages=[{"role": "user", "content": prompt}]
+)
+
+print(response.content[0].text)
